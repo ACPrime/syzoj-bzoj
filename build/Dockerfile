@@ -14,6 +14,7 @@ WORKDIR /var/syzoj/syzoj
 RUN npm install
 WORKDIR /var/syzoj/judge-v3
 RUN npm install
+RUN npm install syspipe
 RUN npm run-script build
 ADD config/* /etc/syzoj-config/
 WORKDIR /root
