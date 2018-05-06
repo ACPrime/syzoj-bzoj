@@ -5,7 +5,7 @@ def escape(str)
 	return Mysql2::Client.escape(str)
 	#return str.gsub("\\","\\\\").gsub("\x00",'\x00').gsub("\n",'\n').gsub("\r",'\r').gsub("'","\'").gsub("\x1a",'\x1a')
 end
-shell = open("download_all.sh", "a")
+shell = open("download_all.sh", "w")
 sql = "SET CHARSET utf8;INSERT INTO problem (id, title, user_id, publicizer_id, is_anonymous, description, input_format, output_format, example, limit_and_hint, time_limit, memory_limit, additional_file_id, ac_num, submit_num, is_public, file_io, file_io_input_name, file_io_output_name, type) VALUES "
 entries = []
 for i in 1000..5310
@@ -21,10 +21,8 @@ for i in 1000..5310
 		else
 			next
 		end
-		if !File.exists?(dir)
-			shell.puts("mkdir -p '#{File.dirname(dir)}'")
-			shell.puts("curl \"https://www.lydsy.com/#{dir}\" -H \"User-Agent: .\" -o \"#{dir}\"")
-		end
+		shell.puts("mkdir -p '#{File.dirname(dir)}'")
+		shell.puts("[ ! -e '#{dir}' ] && curl \"https://www.lydsy.com/#{dir}\" -H \"User-Agent: .\" -o \"#{dir}\"")
 		str = "<img#{$1}src=\"#{replace}\"#{$3}/>"
 		str
 	}

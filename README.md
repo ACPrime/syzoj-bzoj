@@ -16,7 +16,7 @@ gem install mysql2
 
 然后执行 `process.rb` 解析题面。会生成两个文件，分别是 `syzoj.sql` 和 `download_all.sh`，分别是用于导入数据库的题库文件和资源文件下载器。
 
-由于太懒，我没有对 URL 进行检查，所以理论上 `download_all.sh` 可能会出现恶意代码。需要手动检查 `download_all.sh`，确保没有语法错误和不合法的代码，然后执行 `sh download_all.sh`。脚本会生成一个 JudgeOnline 目录，并自动下载所有的图片等文件。这样抓取就完成了。
+由于太懒，我没有对 URL 进行检查，所以理论上 `download_all.sh` 可能会出现恶意代码。需要手动检查 `download_all.sh`，确保没有语法错误和不合法的代码，然后执行 `bash download_all.sh`。脚本会生成一个 JudgeOnline 目录，并自动下载所有的图片等文件。这样抓取就完成了。
 
 # 部署
 需要安装 docker 和 docker-compose。请参考 build 目录内的 README.md 进行部署，本章只介绍部署后导入题目的方法。
