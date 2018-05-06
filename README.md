@@ -1,8 +1,11 @@
-为了避免版权问题，本仓库**不存储**任何与bzoj题目相关的文件，请自行通过其他途径下载。
+为了避免版权问题，本仓库**不存储**任何与bzoj题目相关的文件，请自行通过其他途径下载。本仓库除了 syzoj 相关文件外均以 MIT 协议发布，syzoj 相关文件的许可证见压缩包内。
+
 本教程仅在 Ubuntu 18.04 LTS 上测试通过，可能适用其它 Linux 发行版，但**不支持** Windows 系统。如果使用 Windows，请使用虚拟机。
 # 准备
-`sudo apt-get install curl ruby ruby-2.5-dev libmysqlclient-dev`
-`gem install mysql2`
+```
+sudo apt-get install curl ruby ruby-2.5-dev libmysqlclient-dev
+gem install mysql2
+```
 
 # 抓取
 目前的题号上限被硬编码在 `get.sh` 和 `process.rb` 里面。如果将来题库有更新，可以手动修改。
