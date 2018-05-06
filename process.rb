@@ -30,11 +30,11 @@ for i in 1000..5310
 	}
 	match = /<title>Problem (\d+?)\. -- (.+?)<\/title><center><h2>\1: \2<\/h2><span class=green>Time Limit: <\/span>(\d+?) Sec&nbsp;&nbsp;<span class=green>Memory Limit: <\/span>(\d+?) MB(?:.*?)(&nbsp;&nbsp;<span class=red>Special Judge<\/span>)?<br><span class=green>Submit: <\/span>(\d+?)&nbsp;&nbsp;<span class=green>Solved: <\/span>(\d+?)<br>\[<a href='submitpage.php\?id=\1'>Submit<\/a>\]\[<a href='problemstatus.php\?id=\1'>Status<\/a>\]\[<a href='bbs.php\?id=\1'>Discuss<\/a>\]<\/center><h2>Description<\/h2><div class=content>(.*)<\/div><h2>Input<\/h2><div class=content>(.*)<\/div><h2>Output<\/h2><div class=content>(.*?)<\/div>/m =~ data
 	if $1.to_i != i
-		p i
+		puts "Failed: #{i}"
 		next
 	end
 	# id, title, time_limit, memory_limit, special_judge, submit, solve, description, input, output
-	entries.push "('#{$1.to_i}', '#{escape($2)}', 1, 1, true, '#{escape($8)}', '#{escape($9)}', '#{escape($~[10])}', '', '', #{$~[3].to_i * 1000}, #{$~[4].to_i}, NULL, #{$~[7].to_i}, #{$~[6].to_i}, true, false, NULL, NULL, 'traditional')"
+	entries.push "('#{$1.to_i}', '#{escape($2)}', 1, 1, true, '#{escape($8)}', '#{escape($9)}', '#{escape($~[10])}', '', '', #{$~[3].to_i * 1000}, #{$~[4].to_i}, NULL, 0, 0, true, false, NULL, NULL, 'traditional')"
 end
 open("syzoj.sql","wb"){|f|f.write(sql + entries.join(","))}
 shell.close
